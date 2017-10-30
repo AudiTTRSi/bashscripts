@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#Merge all files mycsv and select only 3rd column
+#and write them to test.csv
+cat mycsv*.csv | cut -d '|' -f3 > test.csv
+
+#keep only unique values and write them to unique_test.csv
+sort -u -r test.csv > unique_test.csv
+
+#count number of unique blocked numbers and exclude header line and write it to variable result
+result=$(( $(cut -f 1 unique_test.csv | wc -l) -1))
+
+#disply value of variable result
+echo $result
